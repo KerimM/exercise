@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">exercise</string>
+    <string name="title_activity_main">exercise</string>
+    <string name="package_name">com.applist.exercise</string>
+    <string name="custom_url_scheme">com.applist.exercise</string>
+</resources>

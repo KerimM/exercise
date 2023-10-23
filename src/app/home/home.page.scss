@@ -1,0 +1,14 @@
+ion-item {
+    margin: 15px 0;
+
+    ion-thumbnail {
+        --size: 100px;
+        --border-radius: 23px;
+        width: unset;
+        height: unset;
+    }
+
+    ion-label {
+        height: 100%;
+    }
+}

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Top Paid Apps
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar debounce="500" [(ngModel)]="searchTerm" placeholder="Search by category or name"
+    (ionChange)="filterApps()"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let app of filteredApps" (click)="detail(app)">
+      <ion-thumbnail slot="start">
+        <img [alt]="app.title.label" [src]="app['im:image'][2].label">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ app['im:name'].label }}</h2>
+        <p>{{ app.summary.label }}</p>
+        <ion-chip color="primary" class="ion-margin-top">
+          <ion-label class="text-bold">{{ app['im:price'].attributes.amount | currency:
+            app['im:price'].attributes.currency }}</ion-label>
+        </ion-chip>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

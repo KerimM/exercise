@@ -1,0 +1,8 @@
+{
+	"appId": "com.applist.exercise",
+	"appName": "exercise",
+	"webDir": "www",
+	"server": {
+		"androidScheme": "https"
+	}
+}

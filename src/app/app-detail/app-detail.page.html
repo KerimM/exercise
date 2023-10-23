@@ -1,0 +1,31 @@
+<ion-content>
+  <div class="position-relative">
+    <img [alt]="app.title.label" [src]="app.link[1].attributes.href">
+    <ion-button id="backIcon" fill="clear" color="dark" (click)="goBack()">
+      <ion-icon slot="icon-only" name="chevron-back-circle"></ion-icon>
+    </ion-button>
+  </div>
+  <ion-item lines="none">
+    <ion-thumbnail slot="start">
+      <img [alt]="app.title.label" [src]="app['im:image'][2].label">
+    </ion-thumbnail>
+    <ion-label>
+      <h1>{{ app['im:name'].label }}</h1>
+      <p> {{ app.category.attributes.label }}</p>
+      <ion-button shape="round" color="primary" class="ion-margin-top text-bold">{{ app['im:price'].attributes.amount |
+        currency:
+        app['im:price'].attributes.currency }}
+      </ion-button>
+    </ion-label>
+  </ion-item>
+  <ion-item class="ion-margin-top" lines="none">
+    <div>
+      <ion-text>
+        {{ app.summary.label.length > 50 && !show ? (app.summary.label | slice:0:50) + '...' : app.summary.label }}
+      </ion-text>
+      <div class="ion-text-right" *ngIf="app.summary.label.length > 50 && !show" (click)="show = !show">
+        <ion-text color="primary">altro</ion-text>
+      </div>
+    </div>
+  </ion-item>
+</ion-content>
