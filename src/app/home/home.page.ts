@@ -8,29 +8,13 @@ import { Router } from '@angular/router';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
-  topApps: Entry[] = [];
-  filteredApps: Entry[] = [];
+  topApps$ = this.appListService.topApps$;
+
   searchTerm: string = '';
 
   constructor(private appListService: AppListService, private router: Router) { }
-
-  ngOnInit() {
-    this.appListService.getTopApps().subscribe((data: AppList) => {
-      this.topApps = data.feed.entry;
-      this.filteredApps = this.topApps;
-    });
-  }
-
-  filterApps() {
-    this.filteredApps = this.topApps.filter(app => {
-      const name = app['im:name'].label.toLowerCase();
-      const category = app.category.attributes.label.toLowerCase();
-      const term = this.searchTerm.toLowerCase();
-      return name.includes(term) || category.includes(term);
-    });
-  }
 
   detail(app: Entry) {
     this.router.navigate(['/app-detail'], { state: { app } });

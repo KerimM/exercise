@@ -12,7 +12,5 @@ export class AppListService {
 
   constructor(private http: HttpClient) { }
 
-  getTopApps(): Observable<AppList> {
-    return this.http.get<AppList>(this.apiEndpoint);
-  }
+  topApps$ = this.http.get<AppList>(this.apiEndpoint);
 }

@@ -7,11 +7,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar debounce="500" [(ngModel)]="searchTerm" placeholder="Search by category or name"
-    (ionChange)="filterApps()"></ion-searchbar>
+  <ion-searchbar debounce="500" [(ngModel)]="searchTerm" placeholder="Search by category or name"></ion-searchbar>
 
-  <ion-list>
-    <ion-item *ngFor="let app of filteredApps" (click)="detail(app)">
+  <ion-list *ngIf="topApps$ | async as data">
+    <ion-item *ngFor="let app of data.feed.entry | filter: searchTerm" (click)="detail(app)">
       <ion-thumbnail slot="start">
         <img [alt]="app.title.label" [src]="app['im:image'][2].label">
       </ion-thumbnail>
